@@ -114,33 +114,30 @@ RM := rm -rf
 -include Sources/Marlin/src/HAL/STM32F1/dogm/subdir.mk
 -include Sources/Marlin/src/HAL/STM32F1/subdir.mk
 -include Sources/Marlin/src/subdir.mk
--include subdir.mk
--include objects.mk
-
 ifneq ($(MAKECMDGOALS),clean)
-ifneq ($(strip $(CC_DEPS)),)
--include $(CC_DEPS)
+ifneq ($(strip $(ASM_DEPS)),)
+-include $(ASM_DEPS)
 endif
 ifneq ($(strip $(C++_DEPS)),)
 -include $(C++_DEPS)
 endif
-ifneq ($(strip $(C_UPPER_DEPS)),)
--include $(C_UPPER_DEPS)
+ifneq ($(strip $(CC_DEPS)),)
+-include $(CC_DEPS)
+endif
+ifneq ($(strip $(CPP_DEPS)),)
+-include $(CPP_DEPS)
 endif
 ifneq ($(strip $(CXX_DEPS)),)
 -include $(CXX_DEPS)
 endif
-ifneq ($(strip $(ASM_DEPS)),)
--include $(ASM_DEPS)
-endif
-ifneq ($(strip $(S_UPPER_DEPS)),)
--include $(S_UPPER_DEPS)
-endif
 ifneq ($(strip $(C_DEPS)),)
 -include $(C_DEPS)
 endif
-ifneq ($(strip $(CPP_DEPS)),)
--include $(CPP_DEPS)
+ifneq ($(strip $(C_UPPER_DEPS)),)
+-include $(C_UPPER_DEPS)
+endif
+ifneq ($(strip $(S_UPPER_DEPS)),)
+-include $(S_UPPER_DEPS)
 endif
 endif
 
@@ -172,20 +169,20 @@ all: main-build
 main-build: firmware.elf secondary-outputs
 
 # Tool invocations
-firmware.elf: $(OBJS) $(USER_OBJS) makefile objects.mk $(OPTIONAL_TOOL_DEPS)
+firmware.elf: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GNU Arm Cross C++ Linker'
-	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mthumb-interwork -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wall  -g3 -T "../Sources/main/hdsc32core/hc32f46x_flash.ld" -Xlinker --gc-sections -L"../Sources" -L"../Sources/main/hdsc32core/common" -Wl,-Map,"firmware.map" --specs=nano.specs --specs=nosys.specs -o "firmware.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mthumb-interwork -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wall -g3 -T "/home/andrew/Documents/PlatformIO/Marlin-H32-Eclipse/firmware/Sources/main/hdsc32core/hc32f46x_flash.ld" -Xlinker --gc-sections -L"/home/andrew/Documents/PlatformIO/Marlin-H32-Eclipse/firmware/Sources" -L"/home/andrew/Documents/PlatformIO/Marlin-H32-Eclipse/firmware/Sources/main/hdsc32core/common" -Wl,-Map,"firmware.map" --specs=nano.specs --specs=nosys.specs -o "firmware.elf" $(OBJS) $(USER_OBJS) $(LIBS) -l":hdsc.a"
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-firmware.bin: firmware.elf makefile objects.mk $(OPTIONAL_TOOL_DEPS)
+firmware.bin: firmware.elf makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Invoking: GNU Arm Cross Create Flash Image'
 	arm-none-eabi-objcopy -O binary "firmware.elf"  "firmware.bin"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-firmware.siz: firmware.elf makefile objects.mk $(OPTIONAL_TOOL_DEPS)
+firmware.siz: firmware.elf makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Invoking: GNU Arm Cross Print Size'
 	arm-none-eabi-size --format=berkeley "firmware.elf"
 	@echo 'Finished building: $@'
@@ -193,7 +190,7 @@ firmware.siz: firmware.elf makefile objects.mk $(OPTIONAL_TOOL_DEPS)
 
 # Other Targets
 clean:
-	-$(RM) $(CC_DEPS)$(C++_DEPS)$(OBJS)$(C_UPPER_DEPS)$(CXX_DEPS)$(SECONDARY_FLASH)$(SECONDARY_SIZE)$(ASM_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(CPP_DEPS) firmware.elf
+	-$(RM) firmware.bin firmware.elf firmware.siz
 	-@echo ' '
 
 secondary-outputs: $(SECONDARY_FLASH) $(SECONDARY_SIZE)
