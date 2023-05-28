@@ -1,0 +1,26 @@
+Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/ftdi_eve_extui.o: \
+ ../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/ftdi_eve_extui.cpp \
+ ../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/MarlinConfigPre.h \
+ ../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/../HAL/platforms.h \
+ ../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/../core/macros.h \
+ ../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/../core/boards.h \
+ ../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/../../Configuration.h \
+ ../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/Version.h \
+ ../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/Conditionals_LCD.h \
+ ../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/../HAL/STM32F1/inc/Conditionals_LCD.h \
+ ../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/../core/drivers.h \
+ ../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/../../Configuration_adv.h \
+ ../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/Conditionals_adv.h \
+ ../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/../HAL/STM32F1/inc/Conditionals_adv.h
+../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/MarlinConfigPre.h:
+../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/../HAL/platforms.h:
+../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/../core/macros.h:
+../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/../core/boards.h:
+../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/../../Configuration.h:
+../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/Version.h:
+../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/Conditionals_LCD.h:
+../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/../HAL/STM32F1/inc/Conditionals_LCD.h:
+../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/../core/drivers.h:
+../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/../../Configuration_adv.h:
+../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/Conditionals_adv.h:
+../Sources/Marlin/src/lcd/extui/ftdi_eve_touch_ui/../../../inc/../HAL/STM32F1/inc/Conditionals_adv.h:
